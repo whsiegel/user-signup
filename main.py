@@ -15,7 +15,7 @@ def is_email(string):
         return domain_dot_present
 
 def valid_username(string):
-    return (len(string) >=3 and len(string) <=3)
+    return (len(string) >=3 and len(string) <=20)
 
 def is_password(pas, val):
     return (pas == val and pas != "" and len(pas) >=3)
@@ -46,7 +46,7 @@ def index():
         if not valid_username(username):
             error3 = "Username must be between 3 and 20 characters"
 
-        else:
+        if not (error1 + error2 + error3):
             return redirect('/welcome?username=' + username)
 
     return render_template('index.html', error1=error1,error2=error2,error3=error3)
